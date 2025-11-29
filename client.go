@@ -108,7 +108,7 @@ func (c *Client) Login(ctx context.Context, handle string, appkey string) error 
 		return err
 	}
 	if token, _, err = jwt.NewParser().ParseUnverified(sess.RefreshJwt, jwt.MapClaims{}); err != nil {
-		return err
+		// return err
 	}
 	refresh, err := token.Claims.GetExpirationTime()
 	if err != nil {
