@@ -96,9 +96,9 @@ func (c *Client) Login(ctx context.Context, handle string, appkey string) error 
 	}
 	// Verify and reject master credentials, sorry, no bad security practices
 	token, _, err := jwt.NewParser().ParseUnverified(sess.AccessJwt, jwt.MapClaims{})
-	if err != nil {
-		return err
-	}
+	// if err != nil {
+	// 	return err
+	// }
 	if token.Claims.(jwt.MapClaims)["scope"] != "com.atproto.appPass" {
 		return fmt.Errorf("%w: %w", ErrLoginUnauthorized, ErrMasterCredentials)
 	}
